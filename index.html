@@ -17,16 +17,21 @@
       body {
         background-color: #ffffff;
         color: #000000;
+        margin: 0;
       }
 
+      /* Make header sticky so it stays on top while scrolling */
       header {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
         display: flex;
         justify-content: space-between;
         align-items: center;
         background-color: #ffffff;
         color: #000000;
-        /* Increase the left/right padding so it is more centered without being exactly center */
         padding: 1rem 5rem;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       }
 
       header h1 {
@@ -38,6 +43,7 @@
         gap: 1rem;
       }
 
+      /* Remove anchor scroll jump by using javascript:void(0) as href */
       nav a {
         text-decoration: none;
         color: #000000;
@@ -58,7 +64,9 @@
 
       /* Project Section */
       #home {
+        /* Make sure it's visible by default */
         display: block;
+        padding-top: 1rem;
       }
 
       #home h2 {
@@ -114,6 +122,7 @@
       /* About Section */
       #about {
         display: none;
+        padding-top: 1rem;
       }
 
       #about-content {
@@ -136,7 +145,6 @@
         margin-bottom: 1rem;
       }
 
-      /* Updated About Me description */
       #about-content p {
         margin-bottom: 1rem;
       }
@@ -160,8 +168,8 @@
     <header>
       <h1>Arshan Munif</h1>
       <nav>
-        <a href="#home" onclick="showSection('home')">Home</a>
-        <a href="#about" onclick="showSection('about')">About</a>
+        <a href="javascript:void(0)" onclick="showSection('home')">Home</a>
+        <a href="javascript:void(0)" onclick="showSection('about')">About</a>
       </nav>
     </header>
 
@@ -174,7 +182,7 @@
           <div class="project">
             <h3>Unsupervised Machine Learning for Dimensionality Reduction in Protein Molecular Simulations Data</h3>
             <img src="https://via.placeholder.com/80" alt="Project Image" />
-            <p>This project presents an automated unsupervised machine learning workflow to apply dimensionality reduction using PCA to uncover a protein’s conformational dynamics.</p>
+            <p>Molecular dynamics (MD) simulations generate extensive biomolecular trajectory datasets across time. However, high dimensionality complicates extracting meaningful insights into relationships between protein structure, motion, and function. This project presents an automated unsupervised machine learning workflow to apply dimensionality reduction using PCA to uncover a protein’s conformational dynamics</p>
             <div class="project-links">
               <a href="https://github.com/your-github-repo" target="_blank">Link</a>
             </div>
@@ -255,6 +263,9 @@
 
         // Show the selected section
         document.getElementById(sectionId).style.display = 'block';
+
+        // Force scroll to top so user sees the entire page including header
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     </script>
   </body>
